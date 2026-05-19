@@ -1,1 +1,6 @@
-<Solution />
+<Solution>
+  <Project Path="CatalogoApp.Application/CatalogoApp.Application.csproj" Id="d54abde9-59e5-4754-a444-5e9d85d166e0" />
+  <Project Path="CatalogoApp.Domain/CatalogoApp.Domain.csproj" Id="90f78b18-8f8e-4de0-8947-21297952cbd0" />
+  <Project Path="CatalogoApp.Infrastructure/CatalogoApp.Infrastructure.csproj" Id="0b669c10-6468-4810-9bd7-2dc16f070f37" />
+  <Project Path="CatalogoApp.Presentation/CatalogoApp.Presentation.csproj" Id="700176cf-f2e2-4cca-a39c-26fdd9a700b9" />
+</Solution>
