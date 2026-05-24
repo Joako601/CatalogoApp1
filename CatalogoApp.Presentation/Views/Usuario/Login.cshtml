@@ -2,13 +2,22 @@
     ViewData["Title"] = "Iniciar sesión";
 }
 
-<div class="auth-wrapper">
-    <div class="auth-card">
-        <h1>🎮 Iniciar sesión</h1>
+<div style="max-width: 420px; margin: 4rem auto; padding: 0 1rem;">
+
+    <div class="moby-block">
+        <div class="moby-block-title" style="justify-content: center; padding-bottom: 0.8rem;">
+            <span style="font-size: 1.15rem; color: #fff; letter-spacing: -0.3px;"> Verificacion de Usuario</span>
+        </div>
+
+        <p style="text-align: center; color: var(--moby-text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">
+            Introduce tus credenciales para acceder a los privilegios de edición.
+        </p>
 
         @if (ViewBag.Error != null)
         {
-            <div class="alert alert-danger">@ViewBag.Error</div>
+            <div style="background-color: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; color: #ff4d4d; padding: 0.8rem; margin-bottom: 1.2rem; border-radius: 4px; font-size: 0.85rem; text-align: center;">
+                ⚠ @ViewBag.Error
+            </div>
         }
 
         <form asp-action="Login" method="post">
@@ -17,21 +26,25 @@
                 <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
             }
 
-            <div class="form-group">
-                <label>Usuario</label>
-                <input type="text" name="nombreUsuario" class="form-control" placeholder="Tu nombre de usuario" required autofocus />
+            <div class="moby-form-group" style="margin-bottom: 1.2rem;">
+                <label class="moby-label">Usuario / Nickname</label>
+                <input type="text" name="nombreUsuario" class="moby-input" placeholder="Tu nombre de usuario" required autofocus autocomplete="off" />
             </div>
 
-            <div class="form-group">
-                <label>Contraseña</label>
-                <input type="password" name="password" class="form-control" placeholder="Tu contraseña" required />
+            <div class="moby-form-group" style="margin-bottom: 1.5rem;">
+                <label class="moby-label">Contraseña</label>
+                <input type="password" name="password" class="moby-input" placeholder="Tu contraseña" required />
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:0.5rem;">Entrar</button>
+            <button type="submit" class="moby-btn" style="width: 100%; padding: 0.65rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                Entrar al Sistema
+            </button>
         </form>
 
-        <div class="auth-link">
-            ¿No tienes cuenta? <a asp-action="Registro">Regístrate</a>
+        <div style="border-top: 1px solid var(--moby-border); margin-top: 1.5rem; padding-top: 1rem; text-align: center; font-size: 0.85rem;">
+            <span style="color: var(--moby-text-muted);">¿No tienes cuenta?</span>
+            <a asp-action="Registro" style="color: var(--moby-blue); text-decoration: none; font-weight: 600; margin-left: 0.3rem;">Regístrate</a>
         </div>
     </div>
+
 </div>

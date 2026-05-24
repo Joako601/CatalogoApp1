@@ -8,9 +8,9 @@
 
     <div class="moby-block">
         <div class="moby-block-title">
-            <span>▼ @(ViewBag.GeneroActual ?? "All Video Games")</span>
+            <span>▼ @(ViewBag.GeneroActual ?? "Todos los Videojuegos")</span>
             <span style="color: var(--moby-text-muted); font-weight: normal; font-size: 0.85rem;">
-                @Model.Count titles found
+                @Model.Count títulos encontrados
             </span>
         </div>
 
@@ -18,7 +18,7 @@
         {
             <div style="text-align: center; padding: 3rem 1rem; color: var(--moby-text-muted);">
                 <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎮</div>
-                <p>No games registered in this section yet.</p>
+                <p>No hay videojuegos registrados en esta sección todavía.</p>
             </div>
         }
         else
@@ -55,36 +55,36 @@
 
         <div class="moby-block">
             <div class="moby-block-title">
-                <span>Contribute</span>
+                <span>Contribuir</span>
             </div>
             @if (ViewBag.UsuarioLogueado != null)
             {
                 <div style="padding: 0.2rem 0;">
                     <p style="color: var(--moby-text-muted); margin-bottom: 0.8rem; font-size: 0.85rem;">
-                        You are authorized to add content.
+                        Tienes autorización para añadir contenido base.
                     </p>
                     <a asp-controller="Catalogo" asp-action="Agregar" class="moby-btn" style="display: block; text-align: center; text-decoration: none;">
-                        + Add Video Game
+                        + Añadir Videojuego
                     </a>
                 </div>
             }
             else
             {
                 <p style="font-size: 0.85rem; color: var(--moby-text-muted); line-height: 1.4;">
-                    <a asp-controller="Usuario" asp-action="Login" style="color: var(--moby-blue); text-decoration: none; font-weight: 600;">Log In</a> to submit new games to the database.
+                    <a asp-controller="Usuario" asp-action="Login" style="color: var(--moby-blue); text-decoration: none; font-weight: 600;">Inicia sesión</a> para sugerir o registrar nuevos títulos en el catálogo.
                 </p>
             }
         </div>
 
         <div class="moby-block">
             <div class="moby-block-title">
-                <span>Browse by Genre</span>
+                <span>Buscar por Género</span>
             </div>
             <ul class="moby-list">
                 <li class="moby-list-item" style="padding: 0.3rem 0;">
                     <a asp-controller="Catalogo" asp-action="Index"
                        style="text-decoration: none; font-weight: @(ViewBag.GeneroActual == null ? "700" : "400"); color: @(ViewBag.GeneroActual == null ? "var(--moby-blue)" : "var(--moby-text-muted)");">
-                        [ All Genres ]
+                        [ Todos los géneros ]
                     </a>
                 </li>
                 @foreach (var gen in ViewBag.Generos as List<string>)

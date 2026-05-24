@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CatalogoApp Database</title>
+    <title>@ViewData["Title"] - CatalogoApp</title>
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,11 +15,13 @@
     <header class="moby-header">
         <div class="moby-nav-container">
             <div class="moby-brand">
-                <a class="moby-logo" asp-controller="Catalogo" asp-action="Index"><span class="logo-text">Catalogo</span><span class="logo-sub">App</span></a>
+                <a class="moby-logo" asp-controller="Home" asp-action="Index"><span class="logo-text">Catalogo</span><span class="logo-sub">App</span></a>
             </div>
 
             <nav class="moby-nav">
                 <div class="nav-links-left">
+                    <a asp-controller="Home" asp-action="Index">Inicio</a>
+                    <a asp-controller="Catalogo" asp-action="Index">Catálogo</a>
                     <a asp-controller="Home" asp-action="Privacy">Privacidad</a>
                 </div>
 
@@ -35,7 +37,7 @@
                     {
                         <div class="guest-nav-links">
                             <a asp-controller="Usuario" asp-action="Login" class="moby-link-auth">Iniciar Sesión</a>
-                            <a asp-controller="Usuario" asp-action="Register" class="moby-btn-nav">Registrarse</a>
+                            <a asp-controller="Usuario" asp-action="Registro" class="moby-btn-nav">Registrarse</a>
                         </div>
                     }
                 </div>
@@ -50,10 +52,10 @@
 
     <footer class="moby-footer">
         <div class="footer-content">
-            <p>&copy; 2026 CatalogoApp Database. Desarrollado por <a href="https://github.com/Joako601" target="_blank">Joako601</a></p>
+            <p>&copy; 2026 CatalogoApp. Desarrollado por <a href="https://github.com/Joako601" target="_blank">Joako601</a></p>
             <div class="footer-links">
                 <a asp-controller="Home" asp-action="Privacy">Transparencia de Datos</a> •
-                <a href="https://github.com/Joako601" target="_blank">GitHub Perfil</a>
+                <a href="https://github.com/Joako601" target="_blank">Perfil de GitHub</a> (Doble spam)
             </div>
         </div>
     </footer>

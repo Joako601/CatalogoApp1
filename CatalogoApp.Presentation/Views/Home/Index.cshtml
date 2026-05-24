@@ -1,8 +1,50 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+
+    <div class="moby-block" style="background: linear-gradient(135deg, #181d26 0%, #1e2530 100%); border-left: 4px solid var(--moby-purple);">
+        <h1 style="color: #fff; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">CatalogoApp</h1>
+        <p style="color: var(--moby-text-muted); font-size: 0.95rem; line-height: 1.6;">
+            La documentación definitiva y archivo digital para coleccionistas, desarrolladores y entusiastas del gaming. Una plataforma colaborativa diseñada para preservar la historia de los videojuegos renglón por renglón.
+        </p>
+    </div>
+
+    <div class="moby-block">
+        <div class="moby-block-title">
+            <span>▼ ¿Qué es CatalogoApp?</span>
+        </div>
+        <p style="color: #cbd5e1; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem;">
+            Es un sistema de información centralizado y de código abierto enfocado en la indexación de títulos interactivos a través de múltiples generaciones de consolas. Olvídate de interfaces pesadas y tarjetas gigantes; aquí priorizamos los datos puros, la velocidad de carga y la estructuración técnica compacta.
+        </p>
+    </div>
+
+    <div class="moby-block">
+        <div class="moby-block-title">
+            <span>▼ Características Principales y Uso</span>
+        </div>
+
+        <table class="moby-specs-table">
+            <tr>
+                <td class="spec-label" style="width: 20%; color: var(--moby-blue); font-weight: 600;">🔍 Explorar</td>
+                <td class="spec-value">Filtra la biblioteca completa de títulos por su género de forma instantánea mediante nuestro motor ligero de ruteo.</td>
+            </tr>
+            <tr>
+                <td class="spec-label" style="width: 20%; color: var(--moby-blue); font-weight: 600;">📝 Contribuir</td>
+                <td class="spec-value">Si tienes una sesión activa en el servidor, podrás dar de alta nuevos videojuegos inyectándolos directamente al registro central.</td>
+            </tr>
+            <tr>
+                <td class="spec-label" style="width: 20%; color: var(--moby-blue); font-weight: 600;">💬 Criticar</td>
+                <td class="spec-value">Comparte tu documentación o quejas técnicas (como advertir sobre políticas abusivas de DLCs) a través de nuestro módulo de reseñas abiertas.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin-top: 1rem; text-align: center;">
+        <a asp-controller="Catalogo" asp-action="Index" class="moby-btn" style="text-decoration: none; padding: 0.8rem 2.5rem; font-size: 1rem; display: inline-block; letter-spacing: 0.3px;">
+            Entrar al Catálogo Principal →
+        </a>
+    </div>
+
 </div>

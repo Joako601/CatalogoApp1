@@ -14,5 +14,21 @@
     "Calificacion": 5,
     "Comentario": "Opino igual que ese guapo \u003C3",
     "FechaCreacion": "2026-05-23T20:34:20.8059085-06:00"
+  },
+  {
+    "Id": 3,
+    "ItemId": 2,
+    "NombreUsuario": "Joaquin",
+    "Calificacion": 5,
+    "Comentario": "Primer Comentario!!!!!!!!!!",
+    "FechaCreacion": "2026-05-23T21:16:12.2835565-06:00"
+  },
+  {
+    "Id": 4,
+    "ItemId": 2,
+    "NombreUsuario": "Joaquin1",
+    "Calificacion": 1,
+    "Comentario": "Segunda comenario!!!!!!!",
+    "FechaCreacion": "2026-05-23T21:21:19.0115356-06:00"
   }
 ]
