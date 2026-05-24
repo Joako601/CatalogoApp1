@@ -1,6 +1,41 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Política de Privacidad";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="moby-grid" style="grid-template-columns: 1fr;">
+    <div class="moby-block">
+        <div class="moby-block-title">
+            <span>▼ Transparencia y Recopilación de Datos</span>
+        </div>
+
+        <div style="padding: 1rem; color: #cbd5e1; line-height: 1.8; font-size: 0.95rem;">
+            <h2 style="color: #fff; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 600;">¿Qué datos se recopilan de los usuarios?</h2>
+            <p style="margin-bottom: 1rem;">Para el correcto funcionamiento de esta base de datos, el sistema procesa una cantidad mínima de información técnica y de autoría:</p>
+
+            <ul style="margin-left: 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                <li>
+                    <strong style="color: var(--moby-blue);">Nombre de Usuario:</strong>
+                    Cuando creas una cuenta o dejas una reseña, tu identificador se asocia públicamente al comentario para la atribución de contenido en el archivo de persistencia.
+                </li>
+                <li>
+                    <strong style="color: var(--moby-blue);">Datos de Sesión (Cookies / HttpContext Session):</strong>
+                    Se utiliza un token temporal e interno para validar que has iniciado sesión de forma segura y permitirte el acceso a funciones restringidas (como añadir juegos o publicar reviews).
+                </li>
+                <li>
+                    <strong style="color: var(--moby-blue);">Metadatos de Contribución:</strong>
+                    La fecha y hora de creación de las reseñas, junto con las calificaciones asignadas, quedan indexadas de forma permanente dentro de la plataforma.
+                </li>
+            </ul>
+
+            <h2 style="color: #fff; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 600;">Persistencia y Uso de la Información</h2>
+            <p style="margin-bottom: 1rem;">
+                Toda la información recopilada se almacena localmente mediante archivos planos estructurados en formato JSON de manera segura. No se realiza ningún rastreo de direcciones IP, no se solicita correo electrónico personal ni se comparten registros con entidades externas de publicidad.
+            </p>
+
+            <div class="moby-notice-box" style="text-align: left; margin-top: 2.5rem; padding: 1.2rem; border-style: solid;">
+                <strong style="color: #fff; display: block; margin-bottom: 0.4rem;">Auditoría de Código Abierto</strong>
+                La lógica detrás del tratamiento de cookies de sesión, el flujo criptográfico de autenticación y la persistencia de datos se puede auditar abiertamente desde el repositorio en mi perfil oficial de <a href="https://github.com/Joako601" target="_blank" style="font-weight: 600;">GitHub</a>.
+            </div>
+        </div>
+    </div>
+</div>

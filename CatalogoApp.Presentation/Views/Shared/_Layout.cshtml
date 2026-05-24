@@ -8,20 +8,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
     <header class="moby-header">
         <div class="moby-nav-container">
             <div class="moby-brand">
-                <a class="moby-logo" asp-controller="Catalogo" asp-action="Index">📊 <span class="logo-text">Catalogo</span><span class="logo-sub">App</span></a>
+                <a class="moby-logo" asp-controller="Catalogo" asp-action="Index"><span class="logo-text">Catalogo</span><span class="logo-sub">App</span></a>
             </div>
+
             <nav class="moby-nav">
-                <a asp-controller="Catalogo" asp-action="Index">Browse All</a>
-                @if (ViewBag.UsuarioLogueado != null)
-                {
-                    <a asp-controller="Catalogo" asp-action="Agregar" class="moby-btn-nav">Add Video Game</a>
-                }
+                <div class="nav-links-left">
+                    <a asp-controller="Home" asp-action="Privacy">Privacidad</a>
+                </div>
+
+                <div class="nav-auth-right">
+                    @if (ViewBag.UsuarioLogueado != null)
+                    {
+                        <div class="user-badge">
+                            <span class="user-name"><i class="fa-solid fa-circle-user"></i> @ViewBag.UsuarioLogueado</span>
+                            <a asp-controller="Usuario" asp-action="Logout" class="moby-btn-logout">Cerrar Sesión</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="guest-nav-links">
+                            <a asp-controller="Usuario" asp-action="Login" class="moby-link-auth">Iniciar Sesión</a>
+                            <a asp-controller="Usuario" asp-action="Register" class="moby-btn-nav">Registrarse</a>
+                        </div>
+                    }
+                </div>
             </nav>
         </div>
         <div class="moby-accent-bar"></div>
@@ -32,7 +49,13 @@
     </main>
 
     <footer class="moby-footer">
-        <p>&copy; 2026 CatalogoApp Database. All statistics and data are for educational purposes.</p>
+        <div class="footer-content">
+            <p>&copy; 2026 CatalogoApp Database. Desarrollado por <a href="https://github.com/Joako601" target="_blank">Joako601</a></p>
+            <div class="footer-links">
+                <a asp-controller="Home" asp-action="Privacy">Transparencia de Datos</a> •
+                <a href="https://github.com/Joako601" target="_blank">GitHub Perfil</a>
+            </div>
+        </div>
     </footer>
 
     @await RenderSectionAsync("Scripts", required: false)

@@ -350,3 +350,96 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   Ajustes Navbar Minimalista (Moby Style)
+   ========================================================================== */
+.moby-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 2rem;
+}
+
+.nav-links-left {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-auth-right {
+    display: flex;
+    align-items: center;
+}
+
+.guest-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* Enlace simple de Iniciar Sesión */
+.moby-link-auth {
+    color: var(--moby-text-muted) !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+    .moby-link-auth:hover {
+        color: #fff !important;
+    }
+
+/* Insignia cuando el usuario está activo */
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(99, 91, 255, 0.08);
+    padding: 0.2rem 0.2rem 0.2rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--moby-border);
+}
+
+.user-name {
+    color: var(--moby-blue);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.moby-btn-logout {
+    background-color: var(--moby-border);
+    color: var(--moby-text-muted) !important;
+    text-decoration: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+    .moby-btn-logout:hover {
+        background-color: #ff4d4d;
+        color: #fff !important;
+    }
+
+.guest-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.moby-link-auth {
+    color: var(--moby-text-muted) !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+    .moby-link-auth:hover {
+        color: #fff !important;
+    }
