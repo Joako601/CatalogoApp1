@@ -148,7 +148,7 @@ Consulta el archivo `LICENSE` para más detalles.
 
 ## 🤖 Declaración de Uso de IA
 
-Este proyecto integra asistencia de Inteligencia Artificial **exclusivamente para la correccion de la identacion**
+Este proyecto integra asistencia de Inteligencia Artificial **exclusivamente para la correccion de la identacion** y **exclusivamente para la optimización de los componentes visuales de la interfaz en las vistas Razor**
 
 ---
 
