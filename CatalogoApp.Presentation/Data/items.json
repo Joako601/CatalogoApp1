@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "Id": 1,
     "Titulo": "Devil May Cry",
@@ -6,5 +6,13 @@
     "Consola": "PlayStation 2",
     "Ano": 2001,
     "Descripcion": "Dante, cazador de demonios, enfrenta a Mundus."
+  },
+  {
+    "Id": 2,
+    "Titulo": "Pay Day 2",
+    "Genero": "robo",
+    "Consola": "playStation 3",
+    "Ano": 2010,
+    "Descripcion": "Un juego que se trataba de robos pero la compania te robaba con los dlc"
   }
 ]

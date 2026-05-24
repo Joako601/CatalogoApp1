@@ -1,31 +1,231 @@
-html {
-  font-size: 14px;
+/* ==========================================================================
+   Variables de Color - Estilo Moby Database
+   ========================================================================== */
+:root {
+    --moby-bg: #11141a; /* Fondo oscuro azulado de la página */
+    --moby-bg-card: #181d26; /* Fondo de los bloques y tablas */
+    --moby-text: #e1e7f0; /* Texto principal claro */
+    --moby-text-muted: #8fa0b5; /* Texto secundario/gris de estadísticas */
+    --moby-purple: #635bff; /* El morado brillante de acento */
+    --moby-blue: #00bcff; /* Azul para enlaces e IDs */
+    --moby-border: #242b38; /* Bordes de las tablas y bloques */
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+/* ==========================================================================
+   Reset y Estilos Base
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: var(--moby-bg);
+    color: var(--moby-text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px; /* Un poco más pequeña para simular base de datos */
+    line-height: 1.5;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.moby-header {
+    background-color: #0b0d11;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.moby-nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.moby-logo {
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.logo-sub {
+    color: var(--moby-blue);
+}
+
+.moby-nav a {
+    color: var(--moby-text-muted);
+    text-decoration: none;
+    margin-left: 1.2rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+    .moby-nav a:hover {
+        color: #fff;
+    }
+
+.moby-nav .moby-btn-nav {
+    color: var(--moby-blue);
+    border: 1px solid var(--moby-blue);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+}
+
+    .moby-nav .moby-btn-nav:hover {
+        background-color: rgba(0, 188, 255, 0.1);
+        color: #fff;
+    }
+
+.moby-accent-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--moby-purple), var(--moby-blue));
+}
+
+/* ==========================================================================
+   Layout Estructurado
+   ========================================================================== */
+.moby-main {
+    max-width: 1300px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Contenedor de dos columnas estilo Moby (Ideal para tu Index) */
+.moby-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Columna grande para datos, chica para stats */
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .moby-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Bloques de sección */
+.moby-block {
+    background-color: var(--moby-bg-card);
+    border: 1px solid var(--moby-border);
+    border-radius: 4px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.moby-block-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--moby-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ==========================================================================
+   Componente de Listas / Rankings (La esencia de MobyGames)
+   ========================================================================== */
+.moby-list {
+    list-style: none;
+}
+
+.moby-list-item {
+    display: flex;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(36, 43, 56, 0.5);
+    align-items: center;
+}
+
+    .moby-list-item:last-child {
+        border-bottom: none;
+    }
+
+.moby-rank {
+    color: var(--moby-text-muted);
+    font-weight: 600;
+    width: 30px;
+    text-align: right;
+    margin-right: 1rem;
+}
+
+.moby-item-name {
+    color: var(--moby-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+    .moby-item-name:hover {
+        text-decoration: underline;
+    }
+
+/* Para mostrar estadísticas rápidas a la derecha de la lista */
+.moby-stat-value {
+    margin-left: auto;
+    color: var(--moby-text-muted);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Formularios e Inputs (Para la vista Agregar)
+   ========================================================================== */
+.moby-form-group {
+    margin-bottom: 1rem;
+}
+
+.moby-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--moby-text-muted);
+}
+
+.moby-input {
+    width: 100%;
+    background-color: var(--moby-bg);
+    border: 1px solid var(--moby-border);
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+    .moby-input:focus {
+        outline: none;
+        border-color: var(--moby-blue);
+    }
+
+.moby-btn {
+    background-color: var(--moby-purple);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+    .moby-btn:hover {
+        filter: brightness(1.1);
+    }
+
+.moby-footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--moby-text-muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--moby-border);
+    margin-top: 4rem;
+}
+
+.moby-side-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }

@@ -1,9 +1,117 @@
-﻿<h1>@Model.Titulo</h1>
+﻿@model CatalogoApp.Domain.Models.Item
+@using CatalogoApp.Domain.Models
+@{
+    ViewData["Title"] = Model.Titulo;
+    var resenas = ViewBag.Resenas as List<Resena> ?? new List<Resena>();
+    var usuarioLogueado = ViewBag.UsuarioLogueado as string;
+}
 
-<p><strong>Género:</strong> @Model.Genero</p>
-<p><strong>Consola:</strong> @Model.Consola</p>
-<p><strong>Año:</strong> @Model.Ano</p>
-<p><strong>Descripción:</strong> @Model.Descripcion</p>
+<!-- Detalle del juego -->
+<div class="detalle-card">
+    <h1>@Model.Titulo</h1>
+    <div class="detalle-meta">
+        <span><strong>Género:</strong> @Model.Genero</span>
+        <span><strong>Consola:</strong> @Model.Consola</span>
+        <span><strong>Año:</strong> @Model.Ano</span>
+    </div>
+    <p class="descripcion">@Model.Descripcion</p>
+</div>
 
-<hr />
-<a asp-action="Index">&larr; Volver al catálogo</a>
+<!-- Sección de Reseñas -->
+<div class="seccion-resenas">
+    <h2>💬 Reseñas (@resenas.Count)</h2>
+
+    @if (TempData["ExitoResena"] != null)
+    {
+        <div class="alert alert-success">✅ @TempData["ExitoResena"]</div>
+    }
+    @if (TempData["ErrorResena"] != null)
+    {
+        <div class="alert alert-danger">❌ @TempData["ErrorResena"]</div>
+    }
+
+    <!-- Lista de reseñas existentes -->
+    @if (resenas.Count == 0)
+    {
+        <div class="empty-state" style="padding:1.5rem;">
+            <p>Sé el primero en reseñar este juego.</p>
+        </div>
+    }
+    else
+    {
+        @foreach (var r in resenas.OrderByDescending(x => x.FechaCreacion))
+        {
+            <div class="resena-card">
+                <div class="resena-header">
+                    <span class="resena-usuario">@r.NombreUsuario</span>
+                    <span class="resena-fecha">@r.FechaCreacion.ToString("dd/MM/yyyy")</span>
+                </div>
+                <div class="estrellas">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        @(i <= r.Calificacion ? "★" : "☆")
+                    }
+                </div>
+                <p class="resena-comentario">@r.Comentario</p>
+            </div>
+        }
+    }
+
+    <!-- Formulario para agregar reseña -->
+    @if (usuarioLogueado != null)
+    {
+        <div class="form-resena">
+            <h3>✍️ Agregar reseña</h3>
+            <form asp-controller="Resena" asp-action="Agregar" method="post">
+                <input type="hidden" name="itemId" value="@Model.Id" />
+
+                <div class="form-group">
+                    <label>Calificación</label>
+                    <div class="rating-select">
+                        @for (int i = 5; i >= 1; i--)
+                        {
+                            <input type="radio" name="calificacion" id="star@(i)" value="@i" @(i == 5 ? "checked" : "") />
+                            <label for="star@(i)" title="@i estrella@(i > 1 ? "s" : "")">★</label>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Comentario</label>
+                    <textarea name="comentario" class="form-control" placeholder="Escribe tu opinión sobre el juego..." rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Publicar reseña</button>
+            </form>
+        </div>
+    }
+    else
+    {
+        <div class="login-required" style="margin-top:1.2rem;">
+            <p style="margin:0;">
+                Para dejar una reseña necesitas
+                <a asp-controller="Usuario" asp-action="Login"
+                   asp-route-returnUrl="@Url.Action("Detalle", "Catalogo", new { id = Model.Id })">iniciar sesión</a>
+                o <a asp-controller="Usuario" asp-action="Registro">registrarte</a>.
+            </p>
+        </div>
+    }
+</div>
+
+<a class="link-back" asp-action="Index">← Volver al catálogo</a>
+
+@section Scripts {
+    <style>
+        /* Estrellas interactivas: dirección inversa en CSS */
+        .rating-select {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+            .rating-select label:hover,
+            .rating-select label:hover ~ label,
+            .rating-select input:checked ~ label {
+                color: var(--color-estrella);
+            }
+    </style>
+}

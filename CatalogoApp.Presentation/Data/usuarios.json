@@ -1,14 +1,20 @@
-﻿[
-    {
-        "Id": 1,
-        "NombreUsuario": "Joaquin Uriona",
-        "PasswordHash": "b78f9f2e3c37a7ea8ac96257260b15ec9e24617af877a6ca5f9085420881c7f9",
-        "Email": "joaquin.uriona@tecdesoftware.edu.mx"
-    },
-    {
-        "Id": 2,
-        "NombreUsuario": "Ariff",
-        "PasswordHash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
-        "Email": "ariff.el.malo@hotmail.com"
-    }
+[
+  {
+    "Id": 1,
+    "NombreUsuario": "Joaquin Uriona",
+    "PasswordHash": "b78f9f2e3c37a7ea8ac96257260b15ec9e24617af877a6ca5f9085420881c7f9",
+    "Email": "joaquin.uriona@tecdesoftware.edu.mx"
+  },
+  {
+    "Id": 2,
+    "NombreUsuario": "Ariff",
+    "PasswordHash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "Email": "ariff.el.malo@hotmail.com"
+  },
+  {
+    "Id": 3,
+    "NombreUsuario": "Joaquin",
+    "PasswordHash": "1ef62013f28e97f69579402dfd1c1b01fa5a9344987edf0ba14a8c717931a274",
+    "Email": "joaquin.uriona@ecdesoftware.edu.mx"
+  }
 ]
