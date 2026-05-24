@@ -229,3 +229,124 @@ body {
     flex-direction: column;
     gap: 1.5rem;
 }
+
+/* ==========================================================================
+   Estilos Específicos para la Vista de Detalle (Moby Style)
+   ========================================================================== */
+
+/* Título e ID Principal */
+.moby-game-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+/* Tabla de especificaciones de la base de datos */
+.moby-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5rem 0;
+}
+
+    .moby-specs-table tr {
+        border-bottom: 1px solid rgba(36, 43, 56, 0.4);
+    }
+
+        .moby-specs-table tr:last-child {
+            border-bottom: none;
+        }
+
+    .moby-specs-table td {
+        padding: 0.8rem 0.5rem;
+        vertical-align: middle;
+    }
+
+.spec-label {
+    color: var(--moby-text-muted);
+    font-weight: 600;
+    width: 30%;
+    font-size: 0.9rem;
+}
+
+.spec-value {
+    color: var(--moby-text);
+    font-size: 0.95rem;
+}
+
+/* Badges pequeños de estilo técnico */
+.moby-badge {
+    background-color: var(--moby-border);
+    color: var(--moby-text);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Texto de descripción */
+.moby-description-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    padding: 0.5rem 0;
+}
+
+/* Caja de avisos (Login/Registro) */
+.moby-notice-box {
+    background-color: rgba(99, 91, 255, 0.05);
+    border: 1px dashed var(--moby-purple);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--moby-text-muted);
+    text-align: center;
+}
+
+    .moby-notice-box a {
+        color: var(--moby-blue);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+        .moby-notice-box a:hover {
+            text-decoration: underline;
+        }
+
+.empty-reviews {
+    color: var(--moby-text-muted);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Enlace de regreso */
+.moby-link-back {
+    color: var(--moby-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+    .moby-link-back:hover {
+        color: var(--moby-blue);
+    }
+
+.moby-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+.moby-side-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .moby-grid {
+        grid-template-columns: 1fr;
+    }
+}

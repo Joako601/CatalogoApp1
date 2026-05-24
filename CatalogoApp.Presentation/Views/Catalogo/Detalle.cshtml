@@ -1,117 +1,159 @@
 ﻿@model CatalogoApp.Domain.Models.Item
-@using CatalogoApp.Domain.Models
+
 @{
     ViewData["Title"] = Model.Titulo;
-    var resenas = ViewBag.Resenas as List<Resena> ?? new List<Resena>();
-    var usuarioLogueado = ViewBag.UsuarioLogueado as string;
 }
 
-<!-- Detalle del juego -->
-<div class="detalle-card">
-    <h1>@Model.Titulo</h1>
-    <div class="detalle-meta">
-        <span><strong>Género:</strong> @Model.Genero</span>
-        <span><strong>Consola:</strong> @Model.Consola</span>
-        <span><strong>Año:</strong> @Model.Ano</span>
-    </div>
-    <p class="descripcion">@Model.Descripcion</p>
-</div>
+<div class="moby-grid">
 
-<!-- Sección de Reseñas -->
-<div class="seccion-resenas">
-    <h2>💬 Reseñas (@resenas.Count)</h2>
+    <div class="moby-main-column">
 
-    @if (TempData["ExitoResena"] != null)
-    {
-        <div class="alert alert-success">✅ @TempData["ExitoResena"]</div>
-    }
-    @if (TempData["ErrorResena"] != null)
-    {
-        <div class="alert alert-danger">❌ @TempData["ErrorResena"]</div>
-    }
-
-    <!-- Lista de reseñas existentes -->
-    @if (resenas.Count == 0)
-    {
-        <div class="empty-state" style="padding:1.5rem;">
-            <p>Sé el primero en reseñar este juego.</p>
+        <div class="moby-game-header">
+            <h1 class="moby-game-title">@Model.Titulo</h1>
+            <div class="moby-accent-bar" style="margin-top: 0.5rem; margin-bottom: 1.5rem;"></div>
         </div>
-    }
-    else
-    {
-        @foreach (var r in resenas.OrderByDescending(x => x.FechaCreacion))
+
+        @if (TempData["ErrorResena"] != null)
         {
-            <div class="resena-card">
-                <div class="resena-header">
-                    <span class="resena-usuario">@r.NombreUsuario</span>
-                    <span class="resena-fecha">@r.FechaCreacion.ToString("dd/MM/yyyy")</span>
-                </div>
-                <div class="estrellas">
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        @(i <= r.Calificacion ? "★" : "☆")
-                    }
-                </div>
-                <p class="resena-comentario">@r.Comentario</p>
+            <div style="background-color: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; color: #ff4d4d; padding: 0.8rem; margin-bottom: 1rem; border-radius: 4px; font-size: 0.9rem;">
+                ⚠ @TempData["ErrorResena"]
             </div>
         }
-    }
-
-    <!-- Formulario para agregar reseña -->
-    @if (usuarioLogueado != null)
-    {
-        <div class="form-resena">
-            <h3>✍️ Agregar reseña</h3>
-            <form asp-controller="Resena" asp-action="Agregar" method="post">
-                <input type="hidden" name="itemId" value="@Model.Id" />
-
-                <div class="form-group">
-                    <label>Calificación</label>
-                    <div class="rating-select">
-                        @for (int i = 5; i >= 1; i--)
-                        {
-                            <input type="radio" name="calificacion" id="star@(i)" value="@i" @(i == 5 ? "checked" : "") />
-                            <label for="star@(i)" title="@i estrella@(i > 1 ? "s" : "")">★</label>
-                        }
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Comentario</label>
-                    <textarea name="comentario" class="form-control" placeholder="Escribe tu opinión sobre el juego..." rows="3"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Publicar reseña</button>
-            </form>
-        </div>
-    }
-    else
-    {
-        <div class="login-required" style="margin-top:1.2rem;">
-            <p style="margin:0;">
-                Para dejar una reseña necesitas
-                <a asp-controller="Usuario" asp-action="Login"
-                   asp-route-returnUrl="@Url.Action("Detalle", "Catalogo", new { id = Model.Id })">iniciar sesión</a>
-                o <a asp-controller="Usuario" asp-action="Registro">registrarte</a>.
-            </p>
-        </div>
-    }
-</div>
-
-<a class="link-back" asp-action="Index">← Volver al catálogo</a>
-
-@section Scripts {
-    <style>
-        /* Estrellas interactivas: dirección inversa en CSS */
-        .rating-select {
-            flex-direction: row-reverse;
-            justify-content: flex-end;
+        @if (TempData["ExitoResena"] != null)
+        {
+            <div style="background-color: rgba(71, 209, 71, 0.1); border: 1px solid #47d147; color: #47d147; padding: 0.8rem; margin-bottom: 1rem; border-radius: 4px; font-size: 0.9rem;">
+                ✓ @TempData["ExitoResena"]
+            </div>
         }
 
-            .rating-select label:hover,
-            .rating-select label:hover ~ label,
-            .rating-select input:checked ~ label {
-                color: var(--color-estrella);
-            }
-    </style>
+        <div class="moby-block">
+            <div class="moby-block-title">
+                <span>▼ Game Overview</span>
+            </div>
+
+            <table class="moby-specs-table">
+                <tr>
+                    <td class="spec-label">Genre</td>
+                    <td class="spec-value"><span class="moby-badge">@Model.Genero</span></td>
+                </tr>
+                <tr>
+                    <td class="spec-label">Platform</td>
+                    <td class="spec-value" style="color: var(--moby-blue); font-weight: 600;">@Model.Consola</td>
+                </tr>
+                <tr>
+                    <td class="spec-label">Released</td>
+                    <td class="spec-value">@Model.Ano</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="moby-block">
+            <div class="moby-block-title">
+                <span>▼ Description</span>
+            </div>
+            <p class="moby-description-text">
+                @Model.Descripcion
+            </p>
+        </div>
+
+        <div class="moby-block">
+            <div class="moby-block-title">
+                <span>💬 User Reviews</span>
+            </div>
+
+            <div class="moby-reviews-section">
+                @if (ViewBag.Resenas != null && ((List<CatalogoApp.Domain.Models.Resena>)ViewBag.Resenas).Count > 0)
+                {
+                    <ul class="moby-list" style="margin-bottom: 1.5rem;">
+                        @foreach (var resena in ViewBag.Resenas as List<CatalogoApp.Domain.Models.Resena>)
+                        {
+                            <li class="moby-list-item" style="flex-direction: column; align-items: flex-start; gap: 4px; padding: 0.8rem 0;">
+                                <div style="display: flex; justify-content: space-between; width: 100%; font-size: 0.85rem;">
+                                    <span style="color: var(--moby-blue); font-weight: 600;">👤 @resena.NombreUsuario</span>
+                                    <span style="color: #ffcc00; font-weight: bold;">
+                                        @for (int i = 0; i < resena.Calificacion; i++)
+                                        {
+                                            <text>★</text>
+                                        }
+                                        @for (int i = resena.Calificacion; i < 5; i++)
+                                        {
+                                            <text>☆</text>
+                                        }
+                                    </span>
+                                </div>
+                                <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.4; white-space: pre-line;">@resena.Comentario</p>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="empty-reviews" style="margin-bottom: 1rem;">Sé el primero en reseñar este juego.</p>
+                }
+
+                @if (ViewBag.UsuarioLogueado != null)
+                {
+                    <div class="moby-review-form-box" style="border-top: 1px solid var(--moby-border); padding-top: 1.5rem; margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.8rem; color: #fff; font-size: 1rem;">Write a Review</h4>
+
+                        <form asp-controller="Resena" asp-action="Agregar" method="post">
+                            <input type="hidden" name="itemId" value="@Model.Id" />
+
+                            <div class="moby-form-group" style="margin-bottom: 1rem;">
+                                <label class="moby-label" style="display:inline-block; margin-right: 0.5rem;">Rating:</label>
+                                <select name="calificacion" class="moby-input" style="width: auto; display: inline-block; padding: 0.2rem 0.5rem;">
+                                    <option value="5">★★★★★ (5/5)</option>
+                                    <option value="4">★★★★☆ (4/5)</option>
+                                    <option value="3">★★★☆☆ (3/5)</option>
+                                    <option value="2">★★☆☆☆ (2/5)</option>
+                                    <option value="1">★☆☆☆☆ (1/5)</option>
+                                </select>
+                            </div>
+
+                            <div class="moby-form-group">
+                                <textarea name="comentario" class="moby-input" rows="4" style="resize: vertical;" placeholder="¿Qué opinas de este juego? Escribe tu reseña aquí..."></textarea>
+                            </div>
+
+                            <button type="submit" class="moby-btn" style="margin-top: 0.7rem;">Submit Review</button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <div class="moby-notice-box">
+                        Para dejar una reseña necesitas
+                        <a asp-controller="Usuario" asp-action="Login">iniciar sesión</a> o
+                        <a asp-controller="Usuario" asp-action="Register">registrarte</a>.
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+            <a asp-controller="Catalogo" asp-action="Index" class="moby-link-back">← Volver al catálogo</a>
+        </div>
+    </div>
+
+    <div class="moby-side-columns">
+        <div class="moby-block">
+            <div class="moby-block-title">
+                <span>Shell Information</span>
+            </div>
+            <ul class="moby-list" style="font-size: 0.85rem;">
+                <li class="moby-list-item">
+                    <span style="color: var(--moby-text-muted)">Item ID:</span>
+                    <span style="margin-left: auto; color: var(--moby-blue); font-weight: 600;">#@Model.Id</span>
+                </li>
+                <li class="moby-list-item">
+                    <span style="color: var(--moby-text-muted)">Status:</span>
+                    <span style="margin-left: auto; color: #47d147; font-weight: 600;">Verified</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }
